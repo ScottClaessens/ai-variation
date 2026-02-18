@@ -18,7 +18,7 @@ list(
   tar_target(data_file, "data/clean_data.csv", format = "file"),
   tar_target(data, load_data(data_file)),
   # impute missing data using mice
-  tar_target(data_imputed, impute_data(data, m = 5)),
+  tar_target(data_imputed, impute_data(data, m = 20)),
   # plot AI usage
   tar_target(plot_usage, plot_AI_usage(data)),
   # plot correlations for general AI
