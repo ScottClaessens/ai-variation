@@ -13,7 +13,7 @@ To run this code, you will need to [install R](https://www.r-project.org/) and
 the following R packages:
 
 ```r
-install.packages(c("brms", "future", "mice", "patchwork", "psych",
+install.packages(c("brms", "future", "gt", "mice", "patchwork", "psych",
                    "tarchetypes", "targets", "tidybayes", "tidyverse"))
 ```
 

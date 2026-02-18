@@ -4,7 +4,7 @@ library(tidyverse)
 
 # load packages and scripts
 tar_option_set(
-  packages = c("brms", "future", "mice", "patchwork", "psych",
+  packages = c("brms", "future", "gt", "mice", "patchwork", "psych",
                "tidybayes", "tidyverse")
 )
 tar_source()
@@ -36,7 +36,11 @@ list(
     ),
     tar_target(fit_baseline, fit_baseline_model(data, outcome)),
     tar_target(means_baseline, extract_means_baseline(fit_baseline, outcome)),
-    tar_target(post_baseline, posterior_samples(fit_baseline))
+    tar_target(post_baseline, posterior_samples(fit_baseline)),
+    tar_target(
+      plot_pred_check_baseline,
+      plot_pred_check(fit_baseline, outcome)
+    )
   ),
   # plot means
   tar_target(
@@ -98,6 +102,26 @@ list(
       )
     )
   ),
+  # combine posterior predictive checks
+  tar_target(
+    plot_pred_check_baseline_all,
+    plot_pred_check_all(
+      list(
+        plot_pred_check_baseline_trust,
+        plot_pred_check_baseline_reliable,
+        plot_pred_check_baseline_competent,
+        plot_pred_check_baseline_genuine,
+        plot_pred_check_baseline_ethical,
+        plot_pred_check_baseline_autonomy,
+        plot_pred_check_baseline_potential_good,
+        plot_pred_check_baseline_potential_harm,
+        plot_pred_check_baseline_interpretability,
+        plot_pred_check_baseline_explainability,
+        plot_pred_check_baseline_humanlike,
+        plot_pred_check_baseline_predictability
+      )
+    )
+  ),
   
   #### Fit regression models predicting trust ####
   
@@ -129,6 +153,10 @@ list(
       plot_regression_moderators(fit_regression_model2, moderator)
     )
   ),
+  
+  #### Supplementary information ####
+  
+  tar_quarto(supplement, "quarto/supplement.qmd", quiet = FALSE),
   
   #### Session info ####
   

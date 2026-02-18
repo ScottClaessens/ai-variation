@@ -1,0 +1,363 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{anyfontsize}
+\usepackage{multirow}
+\usepackage[noblocks]{authblk}
+\usepackage{longtable}
+\renewcommand*{\Authsep}{, }
+\renewcommand*{\Authand}{, }
+\renewcommand*{\Authands}{, }
+\renewcommand{\arraystretch}{1.5}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Supplementary Figure}
+\else
+  \newcommand\figurename{Supplementary Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Supplementary Table}
+\else
+  \newcommand\tablename{Supplementary Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Supplementary information for `Trust in artificial intelligence is agent-specific and multidimensional'},
+  pdfauthor={Scott Claessens; Jim A.C. Everett},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Supplementary information for `Trust in artificial intelligence
+is agent-specific and multidimensional'}
+
+
+\author[1]{Scott Claessens}
+\author[1]{Jim A.C. Everett}
+
+\affil[1]{School of Psychology, University of Kent, Canterbury, UK}
+
+\date{2026-02-18}
+\begin{document}
+\maketitle
+
+
+\newpage
+
+\subsection{Supplementary Methods}\label{supplementary-methods}
+
+\subsubsection{Model specifications}\label{model-specifications}
+
+We fitted the following Bayesian multilevel cumulative-link ordinal
+models to the data using the R package \emph{brms}.
+
+\paragraph{Baseline models}\label{baseline-models}
+
+For the baseline intercept-only model below, we denote trust \(T\) as
+the outcome variable, but we repeated the model across all measures as
+separate outcome variables, dealing with any missing data using listwise
+deletion. For observations \(i\) from participants \(j\) responding to
+AI types \(k\), the model is as follows:
+
+\[
+\begin{aligned}
+\text{T}_i &\sim \text{OrderedLogit}(\phi_i, \bar{\alpha}) \\
+\phi_i &= \alpha_{\text{ID}[j]} + \alpha_{\text{TYPE}[k]} \\
+\alpha_{\text{ID}[j]} &\sim \text{Normal}(0, \sigma_{\text{ID}}) \\
+\alpha_{\text{TYPE}[k]} &\sim \text{Normal}(0, \sigma_{\text{TYPE}}) \\
+\sigma_{\text{ID}}, \sigma_{\text{TYPE}} &\sim \text{Exponential(2)} \\ 
+\bar{\alpha}_c &\sim \text{Normal(0, 1)}
+\end{aligned}
+\]
+
+where \(\alpha_{\text{ID}}\) and \(\alpha_{\text{TYPE}}\) are varying
+intercepts over participants and AI types, and \(\bar{\alpha}\) is a
+vector of six cutpoints \(c\).
+
+\paragraph{Regression models}\label{regression-models}
+
+In regression models, we focus on trust as the outcome variable and
+include regression slopes for performance (\(P\), a composite variable
+of reliable + competent) and morality (\(M\), a composite variable of
+ethical + genuine). We allowed these slopes to vary across AI types. Due
+to MCAR missing data from the experimental design, we iterated this
+model over 20 imputed datasets using the \emph{mice} package and pooled
+the resulting posterior distributions. The model is as follows:
+
+\[
+\begin{aligned}
+\text{T}_i &\sim \text{OrderedLogit}(\phi_i, \bar{\alpha}) \\
+\phi_i &= \alpha_{\text{ID}[j]} + \alpha_{\text{TYPE}[k]} + 
+\beta_P \text{P}_i + \beta_M \text{M}_i \\
+\beta_P &= \bar{\beta}_P + \beta_{P,\text{TYPE}[k]}\\
+\beta_M &= \bar{\beta}_M + \beta_{M,\text{TYPE}[k]}\\
+\alpha_{\text{ID}[j]} &\sim \text{Normal}(0, \sigma_{\text{ID}}) \\
+\begin{bmatrix} \alpha_{\text{TYPE}[k]} \\ \beta_{P,\text{TYPE}[k]}
+\\ \beta_{M,\text{TYPE}[k]} \end{bmatrix}
+&\sim \text{MVNormal} \begin{pmatrix} 0 , \text{R} ,
+\begin{bmatrix} \sigma_{\alpha} \\ \sigma_{\beta_P} \\
+\sigma_{\beta_M} \end{bmatrix} \end{pmatrix} \\
+\sigma_{\text{ID}}, \sigma_{\alpha}, \sigma_{\beta_P},
+\sigma_{\beta_M} &\sim \text{Exponential(2)} \\
+\text{R} &\sim \text{LKJCorr}(2) \\
+\bar{\beta}_P, \bar{\beta}_M &\sim \text{Normal(0, 1)} \\
+\bar{\alpha}_c &\sim \text{Normal(0, 1)}
+\end{aligned}
+\]
+
+\paragraph{Moderation models}\label{moderation-models}
+
+We then included additional variables as moderators of the effects of
+performance and morality on trust: autonomy, potential harm,
+interpretability, anthropomorphism, and predictability. We included
+these moderators in separate models, but below we denote the moderator
+variable generally as \(X\). As before, we iterated the model over 20
+imputed data sets.
+
+\[
+\begin{aligned}
+\text{T}_i &\sim \text{OrderedLogit}(\phi_i, \bar{\alpha}) \\
+\phi_i &= \alpha_{\text{ID}[j]} + \alpha_{\text{TYPE}[k]} + 
+\beta_P \text{P}_i + \beta_M \text{M}_i + \beta_X \text{X}_i + 
+\beta_{PX} \text{P}_i \text{X}_i + \beta_{MX} \text{M}_i \text{X}_i \\
+\beta_P &= \bar{\beta}_P + \beta_{P,\text{TYPE}[k]}\\
+\beta_M &= \bar{\beta}_M + \beta_{M,\text{TYPE}[k]}\\
+\beta_X &= \bar{\beta}_X + \beta_{X,\text{TYPE}[k]}\\
+\beta_{PX} &= \bar{\beta}_{PX} + \beta_{PX,\text{TYPE}[k]}\\
+\beta_{MX} &= \bar{\beta}_{MX} + \beta_{MX,\text{TYPE}[k]}\\
+\alpha_{\text{ID}[j]} &\sim \text{Normal}(0, \sigma_{\text{ID}}) \\
+\begin{bmatrix} \alpha_{\text{TYPE}[k]} \\ \beta_{P,\text{TYPE}[k]}
+\\ \beta_{M,\text{TYPE}[k]} \\ \beta_{X,\text{TYPE}[k]} \\ 
+\beta_{PX,\text{TYPE}[k]} \\ \beta_{MX,\text{TYPE}[k]} \end{bmatrix}
+&\sim \text{MVNormal} \begin{pmatrix} 0 , \text{R} ,
+\begin{bmatrix} \sigma_{\alpha} \\ \sigma_{\beta_P} \\
+\sigma_{\beta_M} \\ \sigma_{\beta_X} \\ \sigma_{\beta_{PX}} \\ 
+\sigma_{\beta_{MX}} \end{bmatrix} \end{pmatrix} \\
+\sigma_{\text{ID}}, \sigma_{\alpha}, \sigma_{\beta_P},
+\sigma_{\beta_M}, \sigma_{\beta_X}, \sigma_{\beta_{PX}}, \sigma_{\beta_{MX}} 
+&\sim \text{Exponential(2)} \\
+\text{R} &\sim \text{LKJCorr}(2) \\
+\bar{\beta}_P, \bar{\beta}_M, \bar{\beta}_X, \bar{\beta}_{PX}, 
+\bar{\beta}_{MX} &\sim \text{Normal(0, 1)} \\
+\bar{\alpha}_c &\sim \text{Normal(0, 1)}
+\end{aligned}
+\]
+
+\newpage
+
+\subsection{Supplementary Figures}\label{supplementary-figures}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{supplement_files/figure-pdf/unnamed-chunk-2-1.pdf}}
+
+}
+
+\caption{Posterior distributions for standard deviation parameters
+across AI types. Greater standard deviation parameters mean that the
+measure varies more across different AI types. Parameters are on the log
+odds scale. Grey densities represent samples from posterior
+distributions, point and line ranges represent median estimates and 66\%
+and 95\% credible intervals.}
+
+\end{figure}%
+
+\newpage
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{supplement_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+}
+
+\caption{Posterior predictive checks for baseline models. Light blue
+bars are the observed data, dark blue point ranges are the posterior
+predictions (posterior means and 95\% credible intervals).}
+
+\end{figure}%
+
+\newpage
+
+\subsection{Supplementary Tables}\label{supplementary-tables}
+
+\begingroup
+\fontsize{8.0pt}{10.0pt}\selectfont
+\begin{longtable}{>{\raggedright\arraybackslash}p{\dimexpr 75.00pt -2\tabcolsep-1.5\arrayrulewidth}>{\raggedright\arraybackslash}p{\dimexpr 300.00pt -2\tabcolsep-1.5\arrayrulewidth}}
+\caption{Descriptions of the AI types in the study.}\tabularnewline
+
+\toprule
+AI Type & Description \\ 
+\midrule\addlinespace[2.5pt]
+General AI & Artificial intelligence (AI) refers to computer systems designed to perform tasks that typically require human intelligence. These systems can learn from data, recognize patterns, make decisions, and adapt over time—powering applications in fields like healthcare, finance, transportation, and more. \\ 
+Skin cancer diagnosis apps & Skin cancer diagnosis apps use AI to assess skin lesions for signs of cancer. By analyzing images of moles or spots, these tools can detect patterns associated with conditions like melanoma and provide users with risk assessments, often recommending follow-up care with a dermatologist. \\ 
+AI therapists & AI therapists are mental healthcare alternatives to human therapists. Offering personalized mental health support for users, AI therapists can tailor their support to match different specialties, including cognitive behavior therapy (CBT) and psychoanalysis. \\ 
+Medical triage AI & Medical triage AI helps hospitals assess incoming patients and prioritize treatment based on the severity of their condition. It analyzes vital signs, symptoms, and medical history to support staff in deciding who needs immediate attention and how to allocate limited resources such as beds, equipment, or specialist care. \\ 
+Facial recognition AI & Facial recognition AI analyzes images or video footage to identify individuals based on their facial features. In the justice system, it can be used to match suspects against criminal databases, assist in locating missing persons, or monitor public spaces for known individuals of interest. \\ 
+Predictive policing algorithms & Predictive policing algorithms are used by police to predict crime. By drawing sophisticated inferences from past crime statistics, current weather, and recent news, the algorithms help police departments by informing them where crimes are likely to occur. \\ 
+Predictive sentencing algorithms & Predictive sentencing algorithms are used in courts to determine what punishment to give convicts. Using facts about the convict, including their demographics, what crime they committed, and how they acted in court, predictive sentencing algorithms inform judges’ sentencing by predicting the likelihood that the convicted person will commit another crime. \\ 
+ChatGPT & ChatGPT is an advanced and flexible AI chatbot designed by the American company OpenAI. It is capable of solving complex logical problems, passing medical exams, producing functional computer code, and accurately identifying the contents of photos. \\ 
+DeepSeek & DeepSeek is an advanced and flexible AI chatbot designed in China. It is capable of solving complex logical problems, passing medical exams, producing functional computer code, and accurately identifying the contents of photos. \\ 
+Audio transcription AI & Audio transcription AI uses advanced algorithms to convert recorded audio into text. It can reliably transcribe recorded conversations and can create live captioning to television shows or videos that don’t already have captions. \\ 
+Instagram filters & Instagram filters automatically alter the images and videos taken on a phone camera. They can make a user appear younger, older, give the user a moustache, or make it look like they are a cartoon character. \\ 
+DALL-E & DALL-E generates images based on user prompts. It can copy a wide variety of styles, such as photographs, oil paintings, and cartoons, and what it creates is largely limited by the imagination of the user’s prompts. \\ 
+Military cybersecurity AI & Military cybersecurity AI monitors military networks for signs of cyber threats, such as unauthorized access or unusual activity. It can detect and respond to attacks in real time, helping to protect sensitive data, communication systems, and critical infrastructure from hacking or sabotage. \\ 
+Autonomous killer drones & Autonomous killer drones identify and kill targets on their own. They are able to identify potential targets, evaluate the likelihood they are in fact an enemy combatant, and if the likelihood is high enough, act on their own to kill the target without human intervention. \\ 
+Robot soldiers & Robot soldiers are autonomous or semi-autonomous machines designed to perform combat roles on the battlefield. They can navigate complex environments, identify targets, and engage in military operations, either independently or under human control, reducing the need to place human soldiers in direct danger. \\ 
+Robot vacuums & Robot vacuums automatically clean the floors of homes. They are able to keep track of where they have already vacuumed and where they need to vacuum, planning their route through and around rooms to make sure they clean everything. \\ 
+Apple's Siri & Apple’s Siri is an AI assistant on the iPhone. Siri responds to the user's verbal instructions by doing things like making calendar appointments, writing messages, and searching the internet for answers to questions. \\ 
+Google Maps AI & Google Maps AI analyzes real-time traffic data to help drivers avoid congestion, accidents, or road closures. It can suggest faster or safer routes based on current conditions and may continuously update directions as the situation on the road changes. \\ 
+Air traffic control AI & Air traffic control AI is used to help manage the movement of aircraft in busy airspace and at airports. It can monitor flight paths, predict potential conflicts, and suggest adjustments to improve safety and efficiency. In some systems, it may assist or automate decisions normally made by human air traffic controllers. \\ 
+Self-driving cars & Self-driving cars are capable of driving themselves as if there was a human driver. Without human input, self-driving cars can figure out how to navigate to the destination, safely dealing with other traffic, pedestrians, and road signs. \\ 
+AI superintelligence & AI superintelligence refers to a hypothetical future AI system that greatly surpasses human intelligence across all domains. Such a system would be capable of independent reasoning, long-term planning, and potentially reshaping entire aspects of society and science. It would operate with far greater speed, accuracy, and foresight than any human, and might act with limited or no human oversight. \\ 
+\bottomrule
+\end{longtable}
+\endgroup
+
+
+
+
+\end{document}

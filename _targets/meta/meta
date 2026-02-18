@@ -56,15 +56,31 @@ plot_reg_model2_autonomy|stem|ee82c901a127901e|e9dbb61d3af9a2cd|3144688517925628
 plot_distances_baseline|stem|3a7ea8e22a174c4d|b4c746d0bdf13ee8|f37f94529a380f20|587867544||t20501.8220823365s|s11401383b|11401383|rds|local|vector|||0.27||
 plot_means_baseline|stem|8ac4065d3ca347b2|dce31456f94108e0|9d14e83a460153ab|879474749||t20501.8221363405s|s114656521b|114656521|rds|local|vector|||0.438|Vectorized input to `element_text()` is not officially supported. ℹ Results may be unexpected or may change in future versions of ggplot2.. 20 unknown levels in `f`: Autonomous killer drone, AI superintelligence, Robot soldier, DeepSeek, Predictive sentencing algorithm, Self-driving car, Predictive policing algorithm, AI therapist, Instagram filter, Military cybersecurity AI, Medical triage AI, DALL-E, Skin cancer diagnosis app, ChatGPT, Facial recognition AI, Air traffic control AI, Apple's Siri, Audio transcription AI, Google Maps AI, and Robot vacuum. 20 unknown levels in `f`: Autonomous killer drone, AI superintelligence, Robot soldier, DeepSeek, Predictive sentencing algorithm, Self-driving car, Predictive policing algorithm, AI therapist, Instagram filter, Military cybersecurity AI, Medical triage AI, DALL-E, Skin cancer diagnosis app, ChatGPT, Facial recognition AI, Air traffic control AI, Apple's Siri, Audio transcription AI, Google Maps AI, and Robot vacuum|
 plot_sd_baseline|stem|67a986a3ae41181f|6d9349793313a2ad|4d972cbe408b48b0|-862622021||t20501.8222611964s|s402940138b|402940138|rds|local|vector|||0.252|Removed 2 rows containing missing values or values outside the scale range (`stat_slabinterval()`).|
+plot_pred_check_baseline_humanlike|stem|ba2e72c036832db9|cecd9fff1eb4410a|7e7d58f67bb2be3e|898577613||t20502.4744443521s|s385539b|385539|rds|local|vector|||0.973||
+plot_pred_check_baseline_autonomy|stem|f810d6eebff6cd0e|99d48c540f6fa64d|a24ad1347c31118c|-140866053||t20502.4744582114s|s386407b|386407|rds|local|vector|||0.842||
+plot_pred_check_baseline_competent|stem|12792ccae5a0e10b|8457ae97a37530ed|adfd4660f820bb59|1151544550||t20502.4744715848s|s384452b|384452|rds|local|vector|||0.804||
+plot_pred_check_baseline_predictability|stem|c085a9dc2808d888|5e6a1e868f7837eb|e0d0b4ddceb32b64|-1554617284||t20502.4744849933s|s386877b|386877|rds|local|vector|||0.801||
+plot_pred_check_baseline_potential_harm|stem|295138bf85ac3f0a|d0debb091eb8e5f9|fcda4b15593b544f|1461690254||t20502.4744992494s|s387502b|387502|rds|local|vector|||0.826||
+plot_pred_check_baseline_ethical|stem|8fcafb58f0461f11|a208256c343854e7|f968be3958e323dc|488446107||t20502.4745145075s|s388456b|388456|rds|local|vector|||0.866||
+plot_pred_check_baseline_potential_good|stem|7509f2cb776ec20a|fc19b37b1c15903c|e24754a09868bc5c|-827149582||t20502.4745275439s|s385423b|385423|rds|local|vector|||0.814||
+plot_pred_check_baseline_reliable|stem|0eac2588fb746f6e|e14e691524a68eb1|2545079473ca971b|-81701375||t20502.4745419926s|s386168b|386168|rds|local|vector|||0.841||
+plot_pred_check_baseline_trust|stem|d32ad0043b97c278|ced67bf03854a82e|2b6c571e6cf0af34|1677545885||t20502.4745594124s|s412838b|412838|rds|local|vector|||1.135||
+plot_pred_check_baseline_interpretability|stem|34f08894e0ca8859|64aebb420db01d8c|8144c4c84ff42dc7|-1709224796||t20502.4745740157s|s387868b|387868|rds|local|vector|||0.865||
+plot_pred_check_baseline_explainability|stem|d3b3929ae6934833|7ed4efdaf18046d6|e676a2f326affeba|2024639384||t20502.4745878017s|s385456b|385456|rds|local|vector|||0.811||
+plot_pred_check_baseline_genuine|stem|fc34e8e53b0aff96|d08db8f369cd076a|45567a355adece11|320762574||t20502.4746004518s|s386137b|386137|rds|local|vector|||0.665||
+plot_pred_check_baseline_all|stem|009559b8f31c2d76|41e3562023471112|4f51d16ddb400724|-1365697109||t20502.4782001344s|s4581116b|4581116|rds|local|vector|||0.811||
+supplement|stem|f1ff0cddccee13d9|32a66748d6aa389c|16757a8923d44c62|-327853888|quarto/supplement.pdf*quarto/supplement.qmd|t20502.6217152179s|s132815b|132815|file|local|vector|||8.037||
 plot_distances|function|0e47f7ee92176782
 fit_baseline_model|function|a0608a8b212f461b
 plot_regression_moderators|function|1b506f56437573b7
 plot_correlations|function|8de1fa38f991be7f
+plot_pred_check_all|function|9de7a65ebc56e62e
 impute_data|function|ebaea23b0794d125
 load_data|function|f1fffdb4b5ebdaa3
 plot_regression_model1|function|947931b63642af56
 extract_means_baseline|function|cb4f144ff8308c1a
 fit_regression_model|function|3e01b71284a9edbb
 plot_means|function|37f5dc1a7268fe9a
+plot_pred_check|function|20de9b3e60aa5da3
 plot_sd_pars|function|e6c9a157b9e2b119
 plot_AI_usage|function|8076150adba5918e

@@ -1,0 +1,176 @@
+---
+title: "Supplementary information for 'Trust in artificial intelligence is agent-specific and multidimensional'"
+format:
+  pdf:
+    keep-tex: true
+    template-partials: 
+      - title.tex
+    include-in-header:
+      text: |
+        \usepackage[noblocks]{authblk}
+        \usepackage{longtable}
+        \renewcommand*{\Authsep}{, }
+        \renewcommand*{\Authand}{, }
+        \renewcommand*{\Authands}{, }
+        \renewcommand{\arraystretch}{1.5}
+author:
+  - name: Scott Claessens
+    affil-id: 1
+  - name: Jim A.C. Everett
+    affil-id: 1
+affiliations:
+  - id: 1
+    name: School of Psychology, University of Kent, Canterbury, UK
+date: today
+execute:
+  echo: false
+  warning: false
+  message: false
+crossref:
+  fig-title: Supplementary Figure
+  tbl-title: Supplementary Table
+---
+
+```{r}
+library(gt)
+library(targets)
+library(tidyverse)
+```
+
+\newpage
+
+## Supplementary Methods
+
+### Model specifications
+
+We fitted the following Bayesian multilevel cumulative-link ordinal models to 
+the data using the R package *brms*.
+
+#### Baseline models
+
+For the baseline intercept-only model below, we denote trust $T$ as the outcome 
+variable, but we repeated the model across all measures as separate outcome 
+variables, dealing with any missing data using listwise deletion. For 
+observations $i$ from participants $j$ responding to AI types $k$, the model is 
+as follows:
+
+$$
+\begin{aligned}
+\text{T}_i &\sim \text{OrderedLogit}(\phi_i, \bar{\alpha}) \\
+\phi_i &= \alpha_{\text{ID}[j]} + \alpha_{\text{TYPE}[k]} \\
+\alpha_{\text{ID}[j]} &\sim \text{Normal}(0, \sigma_{\text{ID}}) \\
+\alpha_{\text{TYPE}[k]} &\sim \text{Normal}(0, \sigma_{\text{TYPE}}) \\
+\sigma_{\text{ID}}, \sigma_{\text{TYPE}} &\sim \text{Exponential(2)} \\ 
+\bar{\alpha}_c &\sim \text{Normal(0, 1)}
+\end{aligned}
+$$
+
+where $\alpha_{\text{ID}}$ and $\alpha_{\text{TYPE}}$ are varying intercepts
+over participants and AI types, and $\bar{\alpha}$ is a vector of six cutpoints
+$c$.
+
+#### Regression models
+
+In regression models, we focus on trust as the outcome variable and include
+regression slopes for performance ($P$, a composite variable of reliable + 
+competent) and morality ($M$, a composite variable of ethical + genuine). We 
+allowed these slopes to vary across AI types. Due to MCAR missing data from the 
+experimental design, we iterated this model over 20 imputed datasets using the 
+*mice* package and pooled the resulting posterior distributions. The model is as 
+follows:
+
+$$
+\begin{aligned}
+\text{T}_i &\sim \text{OrderedLogit}(\phi_i, \bar{\alpha}) \\
+\phi_i &= \alpha_{\text{ID}[j]} + \alpha_{\text{TYPE}[k]} + 
+\beta_P \text{P}_i + \beta_M \text{M}_i \\
+\beta_P &= \bar{\beta}_P + \beta_{P,\text{TYPE}[k]}\\
+\beta_M &= \bar{\beta}_M + \beta_{M,\text{TYPE}[k]}\\
+\alpha_{\text{ID}[j]} &\sim \text{Normal}(0, \sigma_{\text{ID}}) \\
+\begin{bmatrix} \alpha_{\text{TYPE}[k]} \\ \beta_{P,\text{TYPE}[k]}
+\\ \beta_{M,\text{TYPE}[k]} \end{bmatrix}
+&\sim \text{MVNormal} \begin{pmatrix} 0 , \text{R} ,
+\begin{bmatrix} \sigma_{\alpha} \\ \sigma_{\beta_P} \\
+\sigma_{\beta_M} \end{bmatrix} \end{pmatrix} \\
+\sigma_{\text{ID}}, \sigma_{\alpha}, \sigma_{\beta_P},
+\sigma_{\beta_M} &\sim \text{Exponential(2)} \\
+\text{R} &\sim \text{LKJCorr}(2) \\
+\bar{\beta}_P, \bar{\beta}_M &\sim \text{Normal(0, 1)} \\
+\bar{\alpha}_c &\sim \text{Normal(0, 1)}
+\end{aligned}
+$$
+
+#### Moderation models
+
+We then included additional variables as moderators of the effects of 
+performance and morality on trust: autonomy, potential harm, interpretability,
+anthropomorphism, and predictability. We included these moderators in
+separate models, but below we denote the moderator variable generally as $X$.
+As before, we iterated the model over 20 imputed data sets.
+
+$$
+\begin{aligned}
+\text{T}_i &\sim \text{OrderedLogit}(\phi_i, \bar{\alpha}) \\
+\phi_i &= \alpha_{\text{ID}[j]} + \alpha_{\text{TYPE}[k]} + 
+\beta_P \text{P}_i + \beta_M \text{M}_i + \beta_X \text{X}_i + 
+\beta_{PX} \text{P}_i \text{X}_i + \beta_{MX} \text{M}_i \text{X}_i \\
+\beta_P &= \bar{\beta}_P + \beta_{P,\text{TYPE}[k]}\\
+\beta_M &= \bar{\beta}_M + \beta_{M,\text{TYPE}[k]}\\
+\beta_X &= \bar{\beta}_X + \beta_{X,\text{TYPE}[k]}\\
+\beta_{PX} &= \bar{\beta}_{PX} + \beta_{PX,\text{TYPE}[k]}\\
+\beta_{MX} &= \bar{\beta}_{MX} + \beta_{MX,\text{TYPE}[k]}\\
+\alpha_{\text{ID}[j]} &\sim \text{Normal}(0, \sigma_{\text{ID}}) \\
+\begin{bmatrix} \alpha_{\text{TYPE}[k]} \\ \beta_{P,\text{TYPE}[k]}
+\\ \beta_{M,\text{TYPE}[k]} \\ \beta_{X,\text{TYPE}[k]} \\ 
+\beta_{PX,\text{TYPE}[k]} \\ \beta_{MX,\text{TYPE}[k]} \end{bmatrix}
+&\sim \text{MVNormal} \begin{pmatrix} 0 , \text{R} ,
+\begin{bmatrix} \sigma_{\alpha} \\ \sigma_{\beta_P} \\
+\sigma_{\beta_M} \\ \sigma_{\beta_X} \\ \sigma_{\beta_{PX}} \\ 
+\sigma_{\beta_{MX}} \end{bmatrix} \end{pmatrix} \\
+\sigma_{\text{ID}}, \sigma_{\alpha}, \sigma_{\beta_P},
+\sigma_{\beta_M}, \sigma_{\beta_X}, \sigma_{\beta_{PX}}, \sigma_{\beta_{MX}} 
+&\sim \text{Exponential(2)} \\
+\text{R} &\sim \text{LKJCorr}(2) \\
+\bar{\beta}_P, \bar{\beta}_M, \bar{\beta}_X, \bar{\beta}_{PX}, 
+\bar{\beta}_{MX} &\sim \text{Normal(0, 1)} \\
+\bar{\alpha}_c &\sim \text{Normal(0, 1)}
+\end{aligned}
+$$
+
+\newpage
+
+## Supplementary Figures
+
+```{r}
+#| fig-cap: "Posterior distributions for standard deviation parameters across AI types. Greater standard deviation parameters mean that the measure varies more across different AI types. Parameters are on the log odds scale. Grey densities represent samples from posterior distributions, point and line ranges represent median estimates and 66% and 95% credible intervals."
+#| fig-width: 5
+#| fig-height: 3
+tar_read(plot_sd_baseline)
+```
+
+\newpage
+
+```{r}
+#| fig-cap: "Posterior predictive checks for baseline models. Light blue bars are the observed data, dark blue point ranges are the posterior predictions (posterior means and 95% credible intervals)."
+#| fig-height: 6
+#| fig-width: 6
+tar_read(plot_pred_check_baseline_all)
+```
+
+\newpage
+
+## Supplementary Tables
+
+```{r}
+#| tbl-cap: "Descriptions of the AI types in the study."
+read_csv("quarto/descriptions.csv") |>
+  gt() |>
+  cols_width(
+    `AI Type` ~ px(100),
+    Description ~ px(400)
+  ) |>
+  tab_options(
+    table.font.size = px(11),
+    latex.use_longtable = TRUE
+  )
+```
