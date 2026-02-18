@@ -1,10 +1,11 @@
-# Person-Centred Trust in Artificial Intelligence
+# Trust in artificial intelligence is agent-specific and multidimensional
 
-## Getting Started
+## Getting started
 
 ### System requirements
 
-This software has been tested on Windows 11 Enterprise (version 24H2).
+This software has been tested on Windows 11 Enterprise (version 24H2) and
+Macbook M4 Pro (Tahoe 26.2).
 
 ### Installation
 
@@ -24,7 +25,7 @@ issues arise, try installing the specific package versions listed there.
 To run the pipeline:
 
 1. Clone this repository to your local machine
-2. Open the R Project file `person-trust-ai.Rproj`
+2. Open the R Project file `ai-variation.Rproj`
 3. In the console, run the full pipeline with `targets::tar_make()`
 
 ## Help
